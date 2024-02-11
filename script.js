@@ -1,5 +1,3 @@
-
-
 function openDuckDuckGo() {
     var searchTerm = encodeURIComponent(document.getElementById('search-input').value);
     var searchUrl = 'https://duckduckgo.com/?t=h_&q=' + searchTerm + '&ia=web';
@@ -30,6 +28,3 @@ function setBackground() {
 
     closePopup();
 }
-
-
-
