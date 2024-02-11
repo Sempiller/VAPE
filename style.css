@@ -87,8 +87,8 @@ body {
   cursor: pointer;
 }
 
-#search-engine-select,
-#image-upload {
+.customize-popup input,
+.customize-popup select {
   margin-bottom: 10px;
 }
 
