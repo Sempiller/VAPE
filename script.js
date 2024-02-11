@@ -1,18 +1,11 @@
-function openSearchEngine() {
-    var selectedEngine = document.getElementById('browser-select').value;
+
+
+function openDuckDuckGo() {
     var searchTerm = encodeURIComponent(document.getElementById('search-input').value);
-
-    var searchUrls = {
-        'duckduckgo': 'https://duckduckgo.com/?t=h_&q=' + searchTerm + '&ia=web',
-        'google': 'https://www.google.com/search?q=' + searchTerm,
-        'bing': 'https://www.bing.com/search?q=' + searchTerm,
-        'yandex': 'https://yandex.com/search/?text=' + searchTerm
-    };
-
-    var searchUrl = searchUrls[selectedEngine] || searchUrls['duckduckgo'];
-
-    // Open the selected search engine in a new tab
-    window.open(searchUrl, '_blank');
+    var searchUrl = 'https://duckduckgo.com/?t=h_&q=' + searchTerm + '&ia=web';
+    
+    // DuckDuckGo'nun sitesine yönlendirme
+    window.location.href = searchUrl;
 }
 
 function openPopup() {
@@ -37,3 +30,6 @@ function setBackground() {
 
     closePopup();
 }
+
+
+
