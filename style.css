@@ -76,6 +76,9 @@ body {
   border: 2px solid white; /* Beyaz sınır çizgisi */
   align-items: center;
   justify-content: center;
+    border-radius: 10px; /* Köşeleri yuvarlatma miktarı */
+    box-shadow: 0 0 45px #2600ff; /* Neon yeşili (örnek bir renk) gölge efekti */
+    /* Diğer stillendirmeler */
 }
 
 .popup-header {
@@ -103,3 +106,16 @@ body {
 .customize-popup button:hover {
   background-color: #2980b9;
 }
+
+#search-button,
+.customize-button,
+.customize-popup button,
+.popup-header button {
+    border-radius: 5px; /* Köşeleri yuvarlatma miktarı */
+}
+
+#search-input,
+.customize-popup input {
+    border-radius: 5px; /* Köşeleri yuvarlatma miktarı */
+}
+
