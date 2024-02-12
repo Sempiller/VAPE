@@ -60,5 +60,3 @@ function resetBackgroundColor() {
     document.body.style.backgroundColor = 'black'; // Arka plan rengini siyah yap
     localStorage.removeItem('backgroundImage');
 }
-
-
