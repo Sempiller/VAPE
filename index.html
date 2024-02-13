@@ -1,122 +1,170 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: white; 
-  background-image: url('https://cdn.discordapp.com/attachments/1116378866064298105/1206846417432477726/Night-time-wide-wallpaper-HD-2272001890.jpg?ex=65dd7e50&is=65cb0950&hm=a2cb0b1b90dfa287aa290462d69272d69e7a3fa4f64f32885b72eb8348e1faf7&');
-  background-size: cover;
-  background-repeat: no-repeat;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vape Browser</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-.vape-header {
-  text-align: center;
-  padding: 20px;
-}
+    <style>
+        .duyuru {
+            background-color: #ff0000;
+            color: #333;
+            padding: 0.5px;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
 
-.search-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-bottom: 20px;
-}
+        .vape-header {
+            text-align: center;
+            padding: 20px;
+        }
 
-#search-input {
-  padding: 10px;
-  font-size: 16px;
-  width: 300px;
-  margin-right: 10px;
-}
+        .search-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-bottom: 20px;
+        }
 
-#search-button {
-  padding: 10px;
-  font-size: 16px;
-  cursor: pointer;
-  text-decoration: none;
-  background-color: white;
-  color: black;
-  border: 2px solid white;
-}
+        #search-input {
+            padding: 10px;
+            font-size: 16px;
+            width: 300px;
+            margin-right: 10px;
+        }
 
-#search-button:hover {
-  background-color: transparent;
-  color: white;
-}
+        #search-button {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            background-color: white;
+            color: black;
+            border: 2px solid white;
+        }
 
-#results-container {
-  max-width: 600px;
-}
+        #search-button:hover {
+            background-color: transparent;
+            color: white;
+        }
 
-.footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  padding: 10px;
-}
+        #results-container {
+            max-width: 600px;
+        }
 
-.customize-button {
-  position: fixed;
-  bottom: 10px;
-  right: 10px;
-  padding: 10px;
-  background-color: #3498db;
-  color: white;
-  cursor: pointer;
-}
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            padding: 10px;
+        }
 
-.customize-popup {
-  display: none;
-  position: fixed;
-  top: 25%; /* Sayfanın çeyreği */
-  left: 25%; /* Sayfanın çeyreği */
-  width: 50%; /* Sayfanın yarısı */
-  height: 50%; /* Sayfanın yarısı */
-  background: navy; /* Arka plan rengi deniz mavisi */
-  border: 2px solid white; /* Beyaz sınır çizgisi */
-  align-items: center;
-  justify-content: center;
-    border-radius: 10px; /* Köşeleri yuvarlatma miktarı */
-    box-shadow: 0 0 45px #2600ff; /* Neon yeşili (örnek bir renk) gölge efekti */
-    /* Diğer stillendirmeler */
-}
+        .customize-button {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            padding: 10px;
+            background-color: #3498db;
+            color: white;
+            cursor: pointer;
+        }
 
-.popup-header {
-  text-align: right;
-  padding: 10px;
-}
+        .customize-popup {
+            display: none;
+            position: fixed;
+            top: 25%; /* Sayfanın çeyreği */
+            left: 25%; /* Sayfanın çeyreği */
+            width: 50%; /* Sayfanın yarısı */
+            height: 50%; /* Sayfanın yarısı */
+            background: navy; /* Arka plan rengi deniz mavisi */
+            border: 2px solid white; /* Beyaz sınır çizgisi */
+            align-items: center;
+            justify-content: center;
+        }
 
-.close-button {
-  cursor: pointer;
-}
+        .popup-header {
+            text-align: right;
+            padding: 10px;
+        }
 
-.customize-popup input,
-.customize-popup select {
-  margin-bottom: 10px;
-}
+        .close-button {
+            cursor: pointer;
+        }
 
-.customize-popup button {
-  padding: 10px;
-  cursor: pointer;
-  background-color: #3498db;
-  color: white;
-  border: none;
-}
+        #search-engine-select,
+        #image-upload {
+            margin-bottom: 10px;
+        }
 
-.customize-popup button:hover {
-  background-color: #2980b9;
-}
+        .customize-popup button {
+            padding: 10px;
+            cursor: pointer;
+            background-color: #3498db;
+            color: white;
+            border: none;
+        }
 
-#search-button,
-.customize-button,
-.customize-popup button,
-.popup-header button {
-    border-radius: 5px; /* Köşeleri yuvarlatma miktarı */
-}
+        .customize-popup button:hover {
+            background-color: #2980b9;
+        }
+    </style>
 
-#search-input,
-.customize-popup input {
-    border-radius: 5px; /* Köşeleri yuvarlatma miktarı */
-}
+    <div class="duyuru">
+       <a href="https://raw.githubusercontent.com/Sempiller/VAPE/main/tos.txt">Read our tos before searching.</a>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="vape-header">
+        <img src="https://cdn.discordapp.com/attachments/823820606776016927/1206845977819090964/1707804583191__1_-removebg-preview_1.png?ex=65dd7de7&is=65cb08e7&hm=674ac92ca364af37aabc88dd28a63a9f488fedb6d713f3c708fb8d8849a22067&">
+    </div>
+
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="Search On DuckDuckGo...">
+        <button id="search-button" onclick="openDuckDuckGo()">Search</button>
+    </div>
+
+    <div id="results-container">
+    </div>
+
+    <div class="footer">
+        <p>2024 Vape Browser - An opensource project</p>
+    </div>
+
+    <div class="customize-button" onclick="openPopup()">
+        Customize
+    </div>
+
+    <div id="customize-popup" class="customize-popup">
+        <div class="popup-header">
+            <input type="file" id="image-upload" accept="image/*">
+            <button onclick="setBackground()">Set as background</button>
+            <button onclick="resetBackgroundColor()">Reset Background Image</button>
+            <button onclick="closePopup()">Close</button>
+        </div>
+    </div>    
+
+    <script src="script.js"></script>
+</body>
+</html>
