@@ -6,8 +6,10 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: black; /* Arka plan rengi siyah */
-  color: white; /* Metin rengi beyaz */
+  color: white; 
+  background-image: url('https://cdn.discordapp.com/attachments/1116378866064298105/1206846417432477726/Night-time-wide-wallpaper-HD-2272001890.jpg?ex=65dd7e50&is=65cb0950&hm=a2cb0b1b90dfa287aa290462d69272d69e7a3fa4f64f32885b72eb8348e1faf7&');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .vape-header {
