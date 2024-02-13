@@ -79,8 +79,8 @@ body {
   align-items: center;
   justify-content: center;
     border-radius: 10px; /* Köşeleri yuvarlatma miktarı */
-    box-shadow: 0 0 45px #2600ff; /* Neon yeşili (örnek bir renk) gölge efekti */
-    /* Diğer stillendirmeler */
+    box-shadow: 0 0 45px #2600ff; /* Neon mavisi (örnek bir renk) gölge efekti */
+    
 }
 
 .popup-header {
