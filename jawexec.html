@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Script Runner</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: black;
+            color: white;
+            background-image: url('default-background.jpg');
+            background-size: cover; /* Set default background size to cover */
+            background-position: center;
+            position: relative;
+        }
+
+        #header {
+            display: flex;
+            align-items: center;
+        }
+
+        h1 {
+            color: rgb(255, 0, 0);
+            text-shadow: 0 0 10px rgb(255, 0, 0);
+        }
+
+        h2 {
+            margin-left: 10px;
+            color: white;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+        }
+
+        textarea {
+            width: 100%;
+            height: 200px;
+            margin-bottom: 10px;
+            background-color: #111;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            resize: none;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+        }
+
+        button {
+            margin-right: 10px;
+            background-color: #111;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+        }
+
+        #result, #consoleOutput {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #111;
+            color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+        }
+
+        #customize-popup {
+            display: none;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+        }
+
+        #customize-popup input {
+            margin-bottom: 10px;
+        }
+
+        .popup-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #000000;
+            padding: 10px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 0 10px rgb(252, 252, 252)
+        }
+
+        .popup-bar a {
+            color: #ffffff;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+
+        .popup-bar a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="header">
+        <h1>VAPE:</h1>
+        <h2>JavaScript Executor</h2>
+    </div>
+    
+    <textarea id="code" placeholder="Enter your JavaScript code here"></textarea>
+    <br>
+    <button onclick="runScript()">Execute</button>
+    <button onclick="saveScript()">Save Script</button>
+    <button onclick="clearScript()">Clear Script</button>
+    <button onclick="openCustomizePopup()">Customize</button>
+    
+    <h2 style="color: white; text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);">Result:</h2>
+    <div id="result"></div>
+
+    <h2 style="color: white; text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);">Console Output:</h2>
+    <div id="consoleOutput"></div>
+
+    <div id="customize-popup">
+        <input type="file" id="background-input" accept="image/*">
+        <label for="scale-input">Image Scale (1-inf%): </label>
+        <input type="number" id="scale-input" min="1" max="100" value="100">
+        <button onclick="saveBackground()">Save Background</button>
+        <button onclick="resetBackground()">Reset Background</button>
+        <button onclick="closeCustomizePopup()">Close</button>
+    </div>
+
+    <script>
+        function runScript() {
+            // Existing code for running the script
+            // ...
+        }
+
+        function saveScript() {
+            // Existing code for saving the script
+            // ...
+        }
+
+        function clearScript() {
+            // Existing code for clearing the script
+            // ...
+        }
+
+        function openCustomizePopup() {
+            document.getElementById('customize-popup').style.display = 'block';
+        }
+
+        function closeCustomizePopup() {
+            document.getElementById('customize-popup').style.display = 'none';
+        }
+
+        function saveBackground() {
+            var input = document.getElementById('background-input');
+            var file = input.files[0];
+            var scale = document.getElementById('scale-input').value;
+
+            if (file) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    document.body.style.backgroundImage = 'url(' + e.target.result + ')';
+                    document.body.style.backgroundSize = scale + '%'; // Set the background size
+                };
+                reader.readAsDataURL(file);
+            }
+
+            closeCustomizePopup();
+        }
+
+        function resetBackground() {
+            document.body.style.backgroundImage = "url('default-background.jpg')";
+            document.body.style.backgroundSize = 'cover'; // Reset background size
+            closeCustomizePopup();
+        }
+    </script>
+
+<div class="popup-bar">
+    <a href="https://raw.githubusercontent.com/Sempiller/VAPE/main/abtus.txt">About Us</a>
+    <a href="https://raw.githubusercontent.com/Sempiller/VAPE/main/tos.txt">Terms of Service</a>
+    <a href="https://github.com/Sempiller/VAPE/releases">View Source</a>
+    <span><br><br><br>© 2022-2024 SomraSoft - All rights reserved</span>
+</div>
+
+</body>
+</html>
