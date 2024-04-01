@@ -7,7 +7,7 @@
     <link rel="icon" href="https://cdn.discordapp.com/attachments/823820606776016927/1206848365053345822/Picsart_24-02-13_09-24-18-626.jpg?ex=65eff520&is=65dd8020&hm=2ed87160162c255d567207368216e3bdb3ae4c19eb831041b562693eb80097c8&" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
 </head>
-<body style="background-image: url('https://i.imgur.com/2b7XUY8.jpg'); background-size: cover;">
+<body>
 
     <style>
         .duyuru {
@@ -119,7 +119,7 @@
         /* Medya sorgusu */
         @media only screen and (max-width: 600px) {
             body {
-                background-size: 100% auto;
+                background-size: cover;
             }
         }
     </style>
@@ -173,6 +173,44 @@
         </div>
     </div>    
 
-    <script src="script.js"></script>
+    <script>
+        // Kullanıcının cihaz ve işletim sistemini kontrol eden bir fonksiyon
+        function checkOS() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            if (/windows phone/i.test(userAgent)) {
+                return "Windows Phone";
+            }
+            if (/android/i.test(userAgent)) {
+                return "Android";
+            }
+            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                return "iOS";
+            }
+            if (/windows nt/i.test(userAgent)) {
+                return "Windows";
+            }
+            if (/mac os/i.test(userAgent)) {
+                return "Mac OS";
+            }
+            return "Bilinmeyen";
+        }
+
+        // Arka plan resmini ayarlayan fonksiyon
+        function setBodyBackground() {
+            var os = checkOS();
+            var body = document.getElementsByTagName('body')[0];
+            if (os === "Android" || os === "iOS") {
+                body.style.backgroundImage = "url('https://i.imgur.com/woBEz7f.jpeg')";
+            } else if (os === "Windows" || os === "Windows Phone") {
+                body.style.backgroundImage = "url('https://i.imgur.com/2b7XUY8.jpg')"; // Eğer siyah bir resminiz varsa, buraya dosya yolunu girin
+            } else {
+                // Diğer işletim sistemleri için varsayılan arka plan resmi
+                body.style.backgroundImage = "url('https://i.imgur.com/2b7XUY8.jpg')"; // Eğer varsayılan bir resminiz varsa, buraya dosya yolunu girin
+            }
+        }
+
+        // Sayfa yüklendiğinde arka plan resmini ayarlayın
+        window.onload = setBodyBackground;
+    </script>
 </body>
 </html>
