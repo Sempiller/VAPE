@@ -88,9 +88,8 @@
         border: 2px solid white; /* Beyaz sınır çizgisi */
         align-items: center;
         justify-content: center;
-            border-radius: 10px; /* Köşeleri yuvarlatma miktarı */
-            box-shadow: 0 0 45px #2600ff; /* Neon mavisi (örnek bir renk) gölge efekti */
-            
+        border-radius: 10px; /* Köşeleri yuvarlatma miktarı */
+        box-shadow: 0 0 45px #2600ff; /* Neon mavisi (örnek bir renk) gölge efekti */
     }
 
     .popup-header {
@@ -102,8 +101,8 @@
         cursor: pointer;
     }
 
-    .customize-popup input,
-    .customize-popup select {
+    #search-engine-select,
+    #image-upload {
         margin-bottom: 10px;
     }
 
@@ -119,18 +118,6 @@
         background-color: #2980b9;
     }
 
-    #search-button,
-    .customize-button,
-    .customize-popup button,
-    .popup-header button {
-        border-radius: 5px; /* Köşeleri yuvarlatma miktarı */
-    }
-
-    #search-input,
-    .customize-popup input {
-        border-radius: 5px; /* Köşeleri yuvarlatma miktarı */
-    }
-
     /* Medya sorgusu */
     @media only screen and (max-width: 600px) {
         body {
@@ -138,9 +125,9 @@
         }
     }
 </style>
-    
+
 <div class="duyuru">
-   <a href="https://raw.githubusercontent.com/Sempiller/VAPE/main/tos.txt">Read our tos before searching.</a> 
+    <a href="https://raw.githubusercontent.com/Sempiller/VAPE/main/tos.txt">Read our tos before searching.</a>
 </div>
 
 <br>
@@ -166,7 +153,7 @@
 
 <div class="search-container">
     <input type="text" id="search-input" placeholder="Search On DuckDuckGo...">
-    <button id="search-button" onclick="openDuckDuckGo()">Search</button>
+    <button id="search-button">Search</button>
 </div>
 
 <div id="results-container">
@@ -182,80 +169,47 @@
 
 <div id="customize-popup" class="customize-popup">
     <div class="popup-header">
-        <input type="file" id="image-upload" accept="image/*"> 
+        <input type="file" id="image-upload" accept="image/*">
         <button onclick="setBackground()">Set as background</button>
         <button onclick="resetBackgroundColor()">Reset Background Image</button>
         <button onclick="closePopup()">Close</button>
     </div>
-</div>    
+</div>
 
 <script>
-    // Kullanıcının cihaz ve işletim sistemini kontrol eden bir fonksiyon
-    function checkOS() {
-        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-        if (/windows phone/i.test(userAgent)) {
-            return "Windows Phone";
-        }
-        if (/android/i.test(userAgent)) {
-            return "Android";
-        }
-        if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-            return "iOS";
-        }
-        if (/windows nt/i.test(userAgent)) {
-            return "Windows";
-        }
-        if (/mac os/i.test(userAgent)) {
-            return "Mac OS";
-        }
-        return "Bilinmeyen";
+    function openDuckDuckGo() {
+        var searchTerm = encodeURIComponent(document.getElementById('search-input').value);
+        var searchUrl = 'https://duckduckgo.com/?t=h_&q=' + searchTerm + '&ia=web';
+        window.location.href = searchUrl;
     }
 
-    // Arka plan resmini ayarlayan fonksiyon
-    function setBodyBackground() {
-        var os = checkOS();
-        var body = document.getElementsByTagName('body')[0];
-        if (os === "Android" || os === "iOS") {
-            body.style.backgroundImage = "url('https://i.imgur.com/woBEz7f.jpeg')";
-        } else if (os === "Windows" || os === "Windows Phone") {
-            body.style.backgroundImage = "url('https://i.imgur.com/2b7XUY8.jpg')"; // Eğer siyah bir resminiz varsa, buraya dosya yolunu girin
-        } else {
-            // Diğer işletim sistemleri için varsayılan arka plan resmi
-            body.style.backgroundImage = "url('https://i.imgur.com/2b7XUY8.jpg')"; // Eğer varsayılan bir resminiz varsa, buraya dosya yolunu girin
-        }
-    }
-
-    // Customize popup'ı açan fonksiyon
     function openPopup() {
-        var popup = document.getElementById("customize-popup");
-        popup.style.display = "block";
+        document.getElementById('customize-popup').style.display = 'flex';
     }
 
-    // Arka plan resmini ayarlayan fonksiyon
-    function setBackground() {
-        var backgroundImage = document.getElementById("image-upload").files[0];
-        var body = document.getElementsByTagName('body')[0];
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            body.style.backgroundImage = "url('" + e.target.result + "')";
-        };
-        reader.readAsDataURL(backgroundImage);
-    }
-
-    // Arka plan resmini sıfırlayan fonksiyon
-    function resetBackgroundColor() {
-        var body = document.getElementsByTagName('body')[0];
-        body.style.backgroundImage = "url('https://i.imgur.com/2b7XUY8.jpg')";
-    }
-
-    // Customize popup'ı kapatan fonksiyon
     function closePopup() {
-        var popup = document.getElementById("customize-popup");
-        popup.style.display = "none";
+        document.getElementById('customize-popup').style.display = 'none';
     }
 
-    // Sayfa yüklendiğinde arka plan resmini ayarlayın
-    window.onload = setBodyBackground;
+    function setBackground() {
+        var fileInput = document.getElementById('image-upload');
+        var file = fileInput.files[0];
+
+        if (file) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                document.body.style.backgroundImage = 'url(' + e.target.result + ')';
+            };
+            reader.readAsDataURL(file);
+        }
+
+        closePopup();
+    }
+
+    function resetBackgroundColor() {
+        document.body.style.backgroundImage = 'none';
+        document.body.style.backgroundColor = 'black';
+    }
 </script>
 
 </body>
