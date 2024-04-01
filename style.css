@@ -88,6 +88,11 @@ body {
   padding: 10px;
 }
 
+.customize-popup .popup-header button {
+    margin: 0 auto; /* Butonları yatayda ortala */
+    display: block; /* Butonları blok element olarak görüntüle (yani, tek sıra halinde) */
+}
+
 .close-button {
   cursor: pointer;
 }
