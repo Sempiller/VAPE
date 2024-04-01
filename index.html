@@ -9,233 +9,254 @@
 </head>
 <body>
 
-    <style>
-        .duyuru {
-            background-color: #ff0000;
-            color: #333;
-            padding: 0.5px;
-            text-align: center;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-        }
+<style>
+    .duyuru {
+        background-color: #ff0000;
+        color: #333;
+        padding: 0.5px;
+        text-align: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+    }
 
-        .vape-header {
-            text-align: center;
-            padding: 20px;
-        }
+    .vape-header {
+        text-align: center;
+        padding: 20px;
+    }
 
-        .search-container {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            margin-bottom: 20px;
-        }
+    .search-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 20px;
+    }
 
-        #search-input {
-            padding: 10px;
-            font-size: 16px;
-            width: 300px;
-            margin-right: 10px;
-        }
+    #search-input {
+        padding: 10px;
+        font-size: 16px;
+        width: 300px;
+        margin-right: 10px;
+    }
 
-        #search-button {
-            padding: 10px;
-            font-size: 16px;
-            cursor: pointer;
-            text-decoration: none;
-            background-color: white;
-            color: black;
-            border: 2px solid white;
-        }
+    #search-button {
+        padding: 10px;
+        font-size: 16px;
+        cursor: pointer;
+        text-decoration: none;
+        background-color: white;
+        color: black;
+        border: 2px solid white;
+    }
 
-        #search-button:hover {
-            background-color: transparent;
-            color: white;
-        }
+    #search-button:hover {
+        background-color: transparent;
+        color: white;
+    }
 
-        #results-container {
-            max-width: 600px;
-        }
+    #results-container {
+        max-width: 600px;
+    }
 
-        .footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            padding: 10px;
-        }
+    .footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        padding: 10px;
+    }
 
-        .customize-button {
-            position: fixed;
-            bottom: 10px;
-            right: 10px;
-            padding: 10px;
-            background-color: #3498db;
-            color: white;
-            cursor: pointer;
-        }
+    .customize-button {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        padding: 10px;
+        background-color: #3498db;
+        color: white;
+        cursor: pointer;
+    }
 
-        .customize-popup {
-            display: none;
-            position: fixed;
-            top: 25%; /* Sayfanın çeyreği */
-            left: 25%; /* Sayfanın çeyreği */
-            width: 50%; /* Sayfanın yarısı */
-            height: 50%; /* Sayfanın yarısı */
-            background: navy; /* Arka plan rengi deniz mavisi */
-            border: 2px solid white; /* Beyaz sınır çizgisi */
-            align-items: center;
-            justify-content: center;
-        }
+    .customize-popup {
+        display: none;
+        position: fixed;
+        top: 25%; /* Sayfanın çeyreği */
+        left: 25%; /* Sayfanın çeyreği */
+        width: 50%; /* Sayfanın yarısı */
+        height: 50%; /* Sayfanın yarısı */
+        background: navy; /* Arka plan rengi deniz mavisi */
+        border: 2px solid white; /* Beyaz sınır çizgisi */
+        align-items: center;
+        justify-content: center;
+            border-radius: 10px; /* Köşeleri yuvarlatma miktarı */
+            box-shadow: 0 0 45px #2600ff; /* Neon mavisi (örnek bir renk) gölge efekti */
+            
+    }
 
-        .popup-header {
-            text-align: right;
-            padding: 10px;
-        }
+    .popup-header {
+        text-align: right;
+        padding: 10px;
+    }
 
-        .close-button {
-            cursor: pointer;
-        }
+    .close-button {
+        cursor: pointer;
+    }
 
-        #search-engine-select,
-        #image-upload {
-            margin-bottom: 10px;
-        }
+    .customize-popup input,
+    .customize-popup select {
+        margin-bottom: 10px;
+    }
 
-        .customize-popup button {
-            padding: 10px;
-            cursor: pointer;
-            background-color: #3498db;
-            color: white;
-            border: none;
-        }
+    .customize-popup button {
+        padding: 10px;
+        cursor: pointer;
+        background-color: #3498db;
+        color: white;
+        border: none;
+    }
 
-        .customize-popup button:hover {
-            background-color: #2980b9;
-        }
+    .customize-popup button:hover {
+        background-color: #2980b9;
+    }
 
-        /* Medya sorgusu */
-        @media only screen and (max-width: 600px) {
-            body {
-                background-size: cover;
-            }
-        }
-    </style>
+    #search-button,
+    .customize-button,
+    .customize-popup button,
+    .popup-header button {
+        border-radius: 5px; /* Köşeleri yuvarlatma miktarı */
+    }
 
-    <div class="duyuru">
-       <a href="https://raw.githubusercontent.com/Sempiller/VAPE/main/tos.txt">Read our tos before searching.</a> 
+    #search-input,
+    .customize-popup input {
+        border-radius: 5px; /* Köşeleri yuvarlatma miktarı */
+    }
+
+    /* Medya sorgusu */
+    @media only screen and (max-width: 600px) {
+        body {
+            background-size: cover;
+        }
+    }
+</style>
+    
+<div class="duyuru">
+   <a href="https://raw.githubusercontent.com/Sempiller/VAPE/main/tos.txt">Read our tos before searching.</a> 
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="vape-header">
+    <img src="https://i.imgur.com/iswsazz.png">
+</div>
+
+<div class="search-container">
+    <input type="text" id="search-input" placeholder="Search On DuckDuckGo...">
+    <button id="search-button" onclick="openDuckDuckGo()">Search</button>
+</div>
+
+<div id="results-container">
+</div>
+
+<div class="footer">
+    <p>2024 Vape Browser - An opensource project</p>
+</div>
+
+<div class="customize-button" onclick="openPopup()">
+    Customize
+</div>
+
+<div id="customize-popup" class="customize-popup">
+    <div class="popup-header">
+        <input type="file" id="image-upload" accept="image/*"> 
+        <button onclick="setBackground()">Set as background</button>
+        <button onclick="resetBackgroundColor()">Reset Background Image</button>
+        <button onclick="closePopup()">Close</button>
     </div>
+</div>    
 
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <div class="vape-header">
-        <img src="https://i.imgur.com/iswsazz.png">
-    </div>
-
-    <div class="search-container">
-        <input type="text" id="search-input" placeholder="Search On DuckDuckGo...">
-        <button id="search-button" onclick="openDuckDuckGo()">Search</button>
-    </div>
-
-    <div id="results-container">
-    </div>
-
-    <div class="footer">
-        <p>2024 Vape Browser - An opensource project</p>
-    </div>
-
-    <div class="customize-button" onclick="openPopup()">
-        Customize
-    </div>
-
-    <div id="customize-popup" class="customize-popup">
-        <div class="popup-header">
-            <input type="file" id="image-upload" accept="image/*"> 
-            <button onclick="setBackground()">Set as background</button>
-            <button onclick="resetBackgroundColor()">Reset Background Image</button>
-            <button onclick="closePopup()">Close</button>
-        </div>
-    </div>    
-
-    <script>
-        // Kullanıcının cihaz ve işletim sistemini kontrol eden bir fonksiyon
-        function checkOS() {
-            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-            if (/windows phone/i.test(userAgent)) {
-                return "Windows Phone";
-            }
-            if (/android/i.test(userAgent)) {
-                return "Android";
-            }
-            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-                return "iOS";
-            }
-            if (/windows nt/i.test(userAgent)) {
-                return "Windows";
-            }
-            if (/mac os/i.test(userAgent)) {
-                return "Mac OS";
-            }
-            return "Bilinmeyen";
+<script>
+    // Kullanıcının cihaz ve işletim sistemini kontrol eden bir fonksiyon
+    function checkOS() {
+        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        if (/windows phone/i.test(userAgent)) {
+            return "Windows Phone";
         }
-
-        // Arka plan resmini ayarlayan fonksiyon
-        function setBodyBackground() {
-            var os = checkOS();
-            var body = document.getElementsByTagName('body')[0];
-            if (os === "Android" || os === "iOS") {
-                body.style.backgroundImage = "url('https://i.imgur.com/woBEz7f.jpeg')";
-            } else if (os === "Windows" || os === "Windows Phone") {
-                body.style.backgroundImage = "url('https://i.imgur.com/2b7XUY8.jpg')"; // Eğer siyah bir resminiz varsa, buraya dosya yolunu girin
-            } else {
-                // Diğer işletim sistemleri için varsayılan arka plan resmi
-                body.style.backgroundImage = "url('https://i.imgur.com/2b7XUY8.jpg')"; // Eğer varsayılan bir resminiz varsa, buraya dosya yolunu girin
-            }
+        if (/android/i.test(userAgent)) {
+            return "Android";
         }
-
-        // Customize popup'ı açan fonksiyon
-        function openPopup() {
-            var popup = document.getElementById("customize-popup");
-            popup.style.display = "block";
+        if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+            return "iOS";
         }
-
-        // Arka plan resmini ayarlayan fonksiyon
-        function setBackground() {
-            var backgroundImage = document.getElementById("image-upload").files[0];
-            var body = document.getElementsByTagName('body')[0];
-            body.style.backgroundImage = "url('" + URL.createObjectURL(backgroundImage) + "')";
+        if (/windows nt/i.test(userAgent)) {
+            return "Windows";
         }
-
-        // Arka plan resmini sıfırlayan fonksiyon
-        function resetBackgroundColor() {
-            var body = document.getElementsByTagName('body')[0];
-            body.style.backgroundImage = "url('https://i.imgur.com/2b7XUY8.jpg')"; // Varsayılan arka plan resmi
+        if (/mac os/i.test(userAgent)) {
+            return "Mac OS";
         }
+        return "Bilinmeyen";
+    }
 
-        // Customize popup'ı kapatan fonksiyon
-        function closePopup() {
-            var popup = document.getElementById("customize-popup");
-            popup.style.display = "none";
+    // Arka plan resmini ayarlayan fonksiyon
+    function setBodyBackground() {
+        var os = checkOS();
+        var body = document.getElementsByTagName('body')[0];
+        if (os === "Android" || os === "iOS") {
+            body.style.backgroundImage = "url('https://i.imgur.com/woBEz7f.jpeg')";
+        } else if (os === "Windows" || os === "Windows Phone") {
+            body.style.backgroundImage = "url('https://i.imgur.com/2b7XUY8.jpg')"; // Eğer siyah bir resminiz varsa, buraya dosya yolunu girin
+        } else {
+            // Diğer işletim sistemleri için varsayılan arka plan resmi
+            body.style.backgroundImage = "url('https://i.imgur.com/2b7XUY8.jpg')"; // Eğer varsayılan bir resminiz varsa, buraya dosya yolunu girin
         }
+    }
 
-        // Sayfa yüklendiğinde arka plan resmini ayarlayın
-        window.onload = setBodyBackground;
-    </script>
+    // Customize popup'ı açan fonksiyon
+    function openPopup() {
+        var popup = document.getElementById("customize-popup");
+        popup.style.display = "block";
+    }
+
+    // Arka plan resmini ayarlayan fonksiyon
+    function setBackground() {
+        var backgroundImage = document.getElementById("image-upload").files[0];
+        var body = document.getElementsByTagName('body')[0];
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            body.style.backgroundImage = "url('" + e.target.result + "')";
+        };
+        reader.readAsDataURL(backgroundImage);
+    }
+
+    // Arka plan resmini sıfırlayan fonksiyon
+    function resetBackgroundColor() {
+        var body = document.getElementsByTagName('body')[0];
+        body.style.backgroundImage = "url('https://i.imgur.com/2b7XUY8.jpg')";
+    }
+
+    // Customize popup'ı kapatan fonksiyon
+    function closePopup() {
+        var popup = document.getElementById("customize-popup");
+        popup.style.display = "none";
+    }
+
+    // Sayfa yüklendiğinde arka plan resmini ayarlayın
+    window.onload = setBodyBackground;
+</script>
+
 </body>
 </html>
