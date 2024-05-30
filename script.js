@@ -1,6 +1,6 @@
 function openDuckDuckGo() {
     var searchTerm = encodeURIComponent(document.getElementById('search-input').value);
-    var searchUrl = 'https://duckduckgo.com/?t=h_&q=' + searchTerm + '&ia=web';
+    var searchUrl = 'https://search.brave.com/search?q=' + searchTerm;
     
     // DuckDuckGo'nun sitesine yönlendirme
     window.location.href = searchUrl;
